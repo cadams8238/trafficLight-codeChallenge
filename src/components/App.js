@@ -10,11 +10,18 @@ class App extends Component {
 		};
 	}
 	whenClicked() {
-		fetchLight().then(color =>
-			this.setState({
-				activeLight: color
-			})
-		);
+		console.log("click");
+		fetchLight()
+			.then(color =>
+				this.setState({
+					activeLight: color
+				})
+			)
+			.catch(() =>
+				this.setState({
+					activeLight: null
+				})
+			);
 	}
 	render() {
 		let lights = [];
