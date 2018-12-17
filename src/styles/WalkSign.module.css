@@ -1,0 +1,30 @@
+.walkSign {
+	box-sizing: border-box;
+	background-color: black;
+	border: 7px solid rgb(54, 54, 54);
+	border-radius: 15px;
+	padding: 10px;
+}
+
+.walkSign p {
+	font-size: 1.75em;
+}
+
+.green {
+	color: green;
+}
+
+.yellow {
+	color: yellow;
+	animation: yellowBlink 1s linear infinite;
+}
+
+@keyframes yellowBlink {
+	50% {
+		opacity: 0;
+	}
+}
+
+.red {
+	color: red;
+}

@@ -1,12 +1,19 @@
 import React, { Component } from "react";
 import SingleLight from "./SingleLight";
+import WalkSign from "./WalkSign";
+import DropDownForm from "./DropDownForm";
 import styles from "../styles/App.module.css";
+
+// green = WALK (green)
+// yellow = blinking DON'T WALK
+// red = DON'T WALK (red)
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			activeLight: null
+			activeLight: null,
+			mode: "Manual"
 		};
 	}
 	whenClicked() {
@@ -22,6 +29,11 @@ class App extends Component {
 					activeLight: null
 				})
 			);
+	}
+	changeModes(mode) {
+		this.setState({
+			mode
+		});
 	}
 	render() {
 		let lights = [];
@@ -40,8 +52,12 @@ class App extends Component {
 		}
 
 		return (
-			<div className={styles.container} onClick={() => this.whenClicked()}>
-				{lights}
+			<div className={styles.allTrafficSigns}>
+				<DropDownForm changeMode={mode => this.changeModes(mode)} />
+				<div className={styles.container} onClick={() => this.whenClicked()}>
+					{lights}
+				</div>
+				<WalkSign active={this.state.activeLight} />
 			</div>
 		);
 	}
